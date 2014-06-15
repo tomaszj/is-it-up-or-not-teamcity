@@ -14,7 +14,9 @@ class TeamCityHTTPClient
   end
   
   def last_build_status(project_id, build_type_id)
-    self.class.get("/projects/id:#{project_id}/buildTypes/id:#{build_type_id}/builds/?locator=lookupLimit:1", self.request_headers)
+    full_response = self.class.get("/projects/id:#{project_id}/buildTypes/id:#{build_type_id}/builds/?locator=lookupLimit:1", self.request_headers)
+    response = full_response["build"][0]
+    TeamCityBuildStatus.new(response["id"], response["status"])
   end
   
   def request_headers
