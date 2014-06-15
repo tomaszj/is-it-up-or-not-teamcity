@@ -27,7 +27,7 @@ describe TeamCityClient do
         { project_id: "TestProject2", build_type_id: "TestBuildType2"}
       ])
 
-      expect(build_statuses).to be(true)
+      expect(build_statuses).to be(TeamCityClient::STATUS_SUCCESS)
     end
 
     it "should return true if all builds are successful" do
@@ -38,7 +38,7 @@ describe TeamCityClient do
         { project_id: "TestProject2", build_type_id: "TestBuildType2"}
       ])
 
-      expect(build_statuses).to be(true)
+      expect(build_statuses).to be(TeamCityClient::STATUS_SUCCESS)
     end
 
     it "should return false if any of builds is unsuccessful" do
@@ -54,7 +54,7 @@ describe TeamCityClient do
 
       build_statuses = @client.joint_build_status(build_types)
 
-      expect(build_statuses).to be(false)
+      expect(build_statuses).to be(TeamCityClient::STATUS_FAILURE)
     end
   end
 end
