@@ -3,6 +3,11 @@ class Api::V1::BuildIndicatorsController < ApplicationController
     @build_indicators = BuildIndicator.all
     render json: @build_indicators
   end
+
+  def show
+    @build_indicator = BuildIndicator.find(params[:id])
+    render json: @build_indicator
+  end
   
   def status
     @build_indicator = BuildIndicator.find(params[:id])
