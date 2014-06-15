@@ -1,9 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.1'
-
-gem 'rails-api'
-
+gem 'rails', '4.1.1' 
+gem 'rails-api' 
 gem 'spring', :group => :development
 
 group :development, :test do
@@ -16,6 +14,9 @@ end
 
 gem 'httparty'
 
+group :test do
+  gem 'rspec-rails'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
